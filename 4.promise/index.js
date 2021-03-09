@@ -23,7 +23,6 @@ class MyPromise {
   }
 
   _resolve(value) {
-    
     const run = () => {
       if (this._status !== PENDING) return;
       const runFulfilled = value => {
@@ -58,7 +57,6 @@ class MyPromise {
   }
 
   _reject(reason) {
-    
     const run = () => {
       if (this._status !== PENDING) return;
       this._status = REJECTED;
@@ -192,10 +190,12 @@ class MyPromise {
 
 // MyPromise.race([p1,p2,p3,p4]).then(res => console.log(res), err => console.log('err', err))
 
-var p1 = new Promise(resolve => resolve(2))
-var p2 = '123'
-var p3 = Promise.reject(100)
-var p4 = Promise.resolve(200)
+var p1 = new Promise(resolve => resolve(2));
+var p2 = '123';
+var p3 = Promise.reject(100);
+var p4 = Promise.resolve(200);
 
-Promise.race([p1,p2,p3,p4]).then(res => console.log(res), err => console.log('err', err))
-
+Promise.race([p1, p2, p3, p4]).then(
+  res => console.log(res),
+  err => console.log('err', err)
+);
