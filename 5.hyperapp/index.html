@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://hyperapp.dev/tutorial-assets/style.css" />
+  <script type="module">
+    // import { app, h, text } from "https://unpkg.com/hyperapp"
+    import { app, h, text } from "./app.js"
+    // -- ACTIONS --
+
+    // -- VIEWS ---
+
+    // -- RUN --
+    const setName = (state, name) => {
+      return ({
+        ...state,
+        name
+      })
+    }
+
+    const data = [
+      {
+        name: 'A',
+        key: 1
+      },
+      {
+        name: 'B',
+        key: 2
+      },
+      {
+        name: 'C',
+        key: 3
+      },
+      {
+        name: 'D',
+        key: 4
+      }
+    ]
+
+    const data2 = [
+      {
+        name: 'A',
+        key: 1
+      },
+      {
+        name: 'D',
+        key: 4
+      },
+      {
+        name: 'E',
+        key: 5
+      },
+      {
+        name: 'B',
+        key: 2
+      }
+    ]
+
+    app({
+      init: { data },
+      node: document.getElementById("app"),
+      view: ({ data }) =>
+        h('div', {}, [
+          h('button', { onclick: (state) => ({ ...state, data: data2 }) }, text('click')),
+          h('ul', {}, data.map(({ name, key }) => h('li', { key }, text(name))))
+        ])
+      ,
+    })
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
